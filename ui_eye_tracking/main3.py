@@ -26,6 +26,11 @@ class MainApp(App):
         if int(self.root.ids.counter.text)>= 5 and int(self.root.ids.counter.text)<= 6 :
             self.cleanIamgen()
             self.root.ids.ima3.source=str('imagen/pictogramas/Manzana v.3.png') 
+        if int (self.root.ids.counter.text)==7:
+            self.cleanIamgen()
+            print("Entro")
+            self.root.ids.counter.text="0"
+
 
 
     def cleanIamgen(self):
