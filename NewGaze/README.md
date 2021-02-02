@@ -1,3 +1,12 @@
+To Jetson Nano 4GB
+Install
+    PySerial
+    https://pypi.org/project/pyserial
+     
+    DLib
+    https://github.com/JpnTr/Jetson-Nano-Install-Dlib-Library
+
+
 
 This is a Python (2 and 3) library that provides a **webcam-based eye tracking system**. It gives you the exact position of the pupils and the gaze direction, in real time.
 
