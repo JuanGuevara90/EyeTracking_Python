@@ -52,7 +52,22 @@ while 1:
         #cv2.imshow('img3',roi_color2)
         cv2.imwrite('input2.png', roi_color2) 
         try:
-            pupil()
+            #img = cv2.imread(roi_color2,0)
+            img_ = cv2.imread("input2.png", 0)
+            img_ = cv2.medianBlur(img_,5)
+            cimg = cv2.cvtColor(img_,cv2.COLOR_GRAY2BGR)
+            circles = cv2.HoughCircles(img_,cv2.HOUGH_GRADIENT,1,100,param1=50,param2=25,minRadius=10,maxRadius=30)
+
+            circles = np.uint16(np.around(circles))
+
+            for i in circles[0,:]:
+                pt = (i[0],i[1])
+                print(pt)
+                cv2.circle(cimg,(i[0],i[1]),i[2],(0,255,0),2)
+                # draw the center of the circle
+                cv2.circle(cimg,(i[0],i[1]),2,(0,0,255),3)
+            
+            cv2.imshow('detect',cimg)
         except Exception as e:
             print(e)
 

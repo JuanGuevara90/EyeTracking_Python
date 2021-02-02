@@ -4,6 +4,7 @@ import cv2
 import dlib
 from .eye import Eye
 from .calibration import Calibration
+import numpy as np
 
 
 class GazeTracking(object):
@@ -42,7 +43,12 @@ class GazeTracking(object):
     def _analyze(self):
         """Detects the face and initialize Eye objects"""
         frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY)
-        faces = self._face_detector(frame)
+        cv2.imshow('gray', frame)
+        alpha = 3 # Contrast control (1.0-3.0)
+        beta = 50 # Brightness control (0-100)
+        adjusted = cv2.convertScaleAbs(frame, alpha=alpha, beta=beta)
+        cv2.imshow('final', adjusted)
+        faces = self._face_detector(adjusted)
 
         try:
             landmarks = self._predictor(frame, faces[0])
