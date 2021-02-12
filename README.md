@@ -11,3 +11,6 @@ pip install pyttsx3
 
 3) Pyglet -> Reproducir audio
 conda install -c conda-forge pyglet 
+
+
+Tener en cuenta esta informacion
